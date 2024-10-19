@@ -59,5 +59,14 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\Stored Procedures" />
+    <Folder Include="dbo\Functions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\MobileSuits.sql" />
+    <Build Include="dbo\Stored Procedures\sp_GetMobileSuitsByPage.sql" />
+    <Build Include="dbo\Functions\GetMobileSuitsCount.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="FullStackDemo.SQL.GundamDb.refactorlog" />
   </ItemGroup>
 </Project>
