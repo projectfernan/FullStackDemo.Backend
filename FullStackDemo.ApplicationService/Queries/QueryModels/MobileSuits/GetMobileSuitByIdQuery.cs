@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FullStackDemo.ApplicationService.Queries.QueryModels.MobileSuits
 {
-    public class GetMobileSuitById
+    public class GetMobileSuitByIdQuery
     {
         public int id { get; set; }
     }

@@ -1,10 +1,12 @@
 ﻿using Azure;
 using FullStackDemo.ApplicationService.Commands.CommandModels.MobileSuits;
-using FullStackDemo.ApplicationService.Commands.Interfaces.MobilesSuits;
+using FullStackDemo.ApplicationService.Commands.Interfaces.IMobilesSuits;
 using FullStackDemo.ApplicationService.DTOs.Common;
 using FullStackDemo.ApplicationService.DTOs.MobileSuits;
 using FullStackDemo.ApplicationService.Queries.Interfaces.IMobileSuits;
 using FullStackDemo.ApplicationService.Queries.QueryModels.MobileSuits;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -12,6 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FullStackDemo.WebApi.Controllers
 {
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class MobileSuitController : ControllerBase
@@ -80,7 +83,7 @@ namespace FullStackDemo.WebApi.Controllers
 
         // GET api/MobileSuit/GetMobileSuitById?id=1
         [HttpGet("[action]")]
-        public async Task<IActionResult> GetMobileSuitById([FromQuery] GetMobileSuitById data)
+        public async Task<IActionResult> GetMobileSuitById([FromQuery] GetMobileSuitByIdQuery data)
         {
             ApiBodyDto response = new ApiBodyDto();
 

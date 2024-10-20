@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FullStackDemo.ApplicationService.Commands.Interfaces.MobilesSuits
+namespace FullStackDemo.ApplicationService.Commands.Interfaces.IMobilesSuits
 {
     public interface IMobileSuitCommandHandler
     {

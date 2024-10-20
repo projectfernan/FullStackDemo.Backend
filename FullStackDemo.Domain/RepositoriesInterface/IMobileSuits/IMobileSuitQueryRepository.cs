@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FullStackDemo.Domain.RepositoriesInterface
+namespace FullStackDemo.Domain.RepositoriesInterface.IMobileSuits
 {
     public interface IMobileSuitQueryRepository
     {

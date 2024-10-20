@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using FullStackDemo.ApplicationService.Commands.CommandModels.MobileSuits;
-using FullStackDemo.ApplicationService.Commands.Interfaces.MobilesSuits;
+using FullStackDemo.ApplicationService.Commands.Interfaces.IMobilesSuits;
 using FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits;
 using FullStackDemo.Domain.Entities.MobileSuits;
-using FullStackDemo.Domain.RepositoriesInterface;
+using FullStackDemo.Domain.RepositoriesInterface.IMobileSuits;
 using log4net;
 using System;
 using System.Collections.Generic;

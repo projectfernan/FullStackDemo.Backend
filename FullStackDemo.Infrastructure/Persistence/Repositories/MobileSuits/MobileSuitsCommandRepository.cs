@@ -1,5 +1,5 @@
 ﻿using FullStackDemo.Domain.Entities.MobileSuits;
-using FullStackDemo.Domain.RepositoriesInterface;
+using FullStackDemo.Domain.RepositoriesInterface.IMobileSuits;
 using FullStackDemo.Infrastructure.Persistence.Data.EfCore;
 using System;
 using System.Collections.Generic;

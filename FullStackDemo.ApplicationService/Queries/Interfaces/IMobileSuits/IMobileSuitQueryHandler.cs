@@ -11,6 +11,6 @@ namespace FullStackDemo.ApplicationService.Queries.Interfaces.IMobileSuits
     public interface IMobileSuitQueryHandler
     {
         Task<MobileSuitPaginatedDto> HandleGetMobileSuitPaginated(GetMobileSuitPaginatedQuery query);
-        Task<MobileSuitDto> HandleGetMobileSuitById(GetMobileSuitById query);
+        Task<MobileSuitDto> HandleGetMobileSuitById(GetMobileSuitByIdQuery query);
     }
 }

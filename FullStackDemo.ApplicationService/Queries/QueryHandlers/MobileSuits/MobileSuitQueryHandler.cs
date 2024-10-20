@@ -3,7 +3,7 @@ using FullStackDemo.ApplicationService.DTOs.MobileSuits;
 using FullStackDemo.ApplicationService.Queries.Interfaces.IMobileSuits;
 using FullStackDemo.ApplicationService.Queries.QueryModels.MobileSuits;
 using FullStackDemo.Domain.Entities.MobileSuits;
-using FullStackDemo.Domain.RepositoriesInterface;
+using FullStackDemo.Domain.RepositoriesInterface.IMobileSuits;
 using log4net;
 using Microsoft.Data.SqlClient;
 using Newtonsoft.Json;
@@ -58,7 +58,7 @@ namespace FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits
             return result;
         }
 
-        public async Task<MobileSuitDto> HandleGetMobileSuitById(GetMobileSuitById query) 
+        public async Task<MobileSuitDto> HandleGetMobileSuitById(GetMobileSuitByIdQuery query) 
         { 
             MobileSuitDto result = new MobileSuitDto();
 

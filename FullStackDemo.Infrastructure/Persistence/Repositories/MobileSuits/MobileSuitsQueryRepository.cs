@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Dapper;
 using FullStackDemo.Domain.Entities.MobileSuits;
-using FullStackDemo.Domain.RepositoriesInterface;
+using FullStackDemo.Domain.RepositoriesInterface.IMobileSuits;
 using FullStackDemo.Infrastructure.Persistence.Data.Dapper;
 using Microsoft.Data.SqlClient;
 using System;
