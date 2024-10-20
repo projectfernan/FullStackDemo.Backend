@@ -20,13 +20,13 @@ namespace FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits
     public class MobileSuitQueryHandler : IMobileSuitQueryHandler
     {
         private readonly static ILog _log = LogManager.GetLogger(typeof(MobileSuitQueryHandler));
-        private readonly IMobileSuitRepository _mobileSuitRepository;
+        private readonly IMobileSuitQueryRepository _mobileSuitQueryRepository;
         private readonly IMapper _mapper;
 
-        public MobileSuitQueryHandler(IMobileSuitRepository mobileSuitRepository,
+        public MobileSuitQueryHandler(IMobileSuitQueryRepository mobileSuitQueryRepository,
                                       IMapper mapper)
         {
-            _mobileSuitRepository = mobileSuitRepository;
+            _mobileSuitQueryRepository = mobileSuitQueryRepository;
             _mapper = mapper;
         }
 
@@ -38,7 +38,7 @@ namespace FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits
             try
             {
                 // Call the repository method to get paginated Mobile Suit data
-                var res = await _mobileSuitRepository.GetMobileSuitPaginatedAsync(query.search, query.start, query.length);
+                var res = await _mobileSuitQueryRepository.GetMobileSuitPaginatedAsync(query.search, query.start, query.length);
 
                 // Map the retrieved data to the DTO
                 result = _mapper.Map<MobileSuitPaginated, MobileSuitPaginatedDto>(res);
@@ -55,6 +55,32 @@ namespace FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits
             }
 
             // Return the result DTO, which may be empty if an error occurred
+            return result;
+        }
+
+        public async Task<MobileSuitDto> HandleGetMobileSuitById(GetMobileSuitById query) 
+        { 
+            MobileSuitDto result = new MobileSuitDto();
+
+            try 
+            {
+                // Call the repository method to retrieve the MobileSuit entity by its ID
+                var res = await _mobileSuitQueryRepository.GetMobileSuitByIdAsync(query.id);
+
+                // Map the retrieved MobileSuit entity to the MobileSuitDto
+                result = _mapper.Map<MobileSuit, MobileSuitDto>(res);
+            }
+            catch(Exception ex) {
+                // Log the error message, including inner exception if available
+                _log.Error($"HandleGetMobileSuitById: [{ex.InnerException?.Message ?? ex.Message}]");
+
+                throw new ApplicationException(
+                   ex.InnerException != null ? "InnerException Error: " : "Exception Error: ",
+                   ex.InnerException ?? ex
+                );
+            }
+
+            // Return the mapped MobileSuitDto result
             return result;
         }
     }

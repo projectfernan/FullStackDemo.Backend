@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FullStackDemo.Infrastructure.Persistence.Repositories.MobileSuits
 {
-    public class MobileSuitsQueryRepository : IMobileSuitRepository
+    public class MobileSuitsQueryRepository : IMobileSuitQueryRepository
     {
         private readonly IMapper _mapper;
         private readonly IGundamDb _gundamDb;
@@ -53,6 +53,38 @@ namespace FullStackDemo.Infrastructure.Persistence.Repositories.MobileSuits
                 );
             }
            
+            return ret;
+        }
+
+        public async Task<MobileSuit> GetMobileSuitByIdAsync(int id)
+        {
+            MobileSuit ret = new MobileSuit();
+
+            // Define the stored procedure name to be called
+            string sp = "dbo.sp_GetMobileSuitById";
+
+            // Create a DynamicParameters object to hold the parameters for the stored procedure
+            var param = new DynamicParameters();
+            param.Add("@id", id);
+
+            try
+            {
+                // Call the ReadMultipleDataAsync method to execute the stored procedure
+                var res = await _gundamDb.ReadDataAsync<MobileSuit, DynamicParameters>(sp, param);
+
+                if (res.Count() > 0) {
+                    ret = res.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle exceptions by wrapping them in an ApplicationException for clarity
+                throw new ApplicationException(
+                ex.InnerException != null ? "InnerException Error: " : "Exception Error: ",
+                ex.InnerException ?? ex
+                );
+            }
+
             return ret;
         }
     }

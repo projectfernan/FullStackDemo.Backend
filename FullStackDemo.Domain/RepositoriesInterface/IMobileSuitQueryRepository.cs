@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace FullStackDemo.Domain.RepositoriesInterface
 {
-    public interface IMobileSuitRepository
+    public interface IMobileSuitQueryRepository
     {
         Task<MobileSuitPaginated> GetMobileSuitPaginatedAsync(string search, int start, int length);
+        Task<MobileSuit> GetMobileSuitByIdAsync(int id);
     }
 }
