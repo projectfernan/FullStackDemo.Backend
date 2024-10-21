@@ -11,6 +11,15 @@ builder.ConfigureLogging();
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
 
+builder.Services.AddCors(options =>
+{
+    var serverHost = builder.Configuration["ReactWebApp:ServerHost"];
+    options.AddPolicy("AllowSpecificOrigin",
+       builder => builder.WithOrigins(serverHost) // Your React app's URL
+                         .AllowAnyHeader()
+                         .AllowAnyMethod());
+});
+
 // Configure database
 //DbContext
 builder.Services.ConfigureDatabase(builder.Configuration);
@@ -41,6 +50,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("AllowSpecificOrigin");
 app.UseAuthentication();
 app.UseAuthorization();
 
