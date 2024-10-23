@@ -35,7 +35,7 @@ namespace FullStackDemo.WebApi.Controllers
             ApiBodyDto response = new ApiBodyDto();
 
             // Ensure the search parameter is not null or empty; set to empty string if it is
-            if (string.IsNullOrEmpty(data.search))
+            if (string.IsNullOrEmpty(data.search) || data.search == "null" || data.search == null)
             {
                 data.search = "";
             }
