@@ -6,6 +6,7 @@ using FullStackDemo.ApplicationService.Queries.Interfaces.IAuthentication;
 using FullStackDemo.ApplicationService.Queries.Interfaces.IMobileSuits;
 using FullStackDemo.ApplicationService.Queries.QueryHandlers.Authentication;
 using FullStackDemo.ApplicationService.Queries.QueryHandlers.MobileSuits;
+using FullStackDemo.Infrastructure.Persistence.Data.Seeder;
 
 namespace FullStackDemo.WebApi.Configurations
 {
@@ -17,6 +18,8 @@ namespace FullStackDemo.WebApi.Configurations
             services.AddScoped<IMobileSuitCommandHandler, MobileSuitCommandHandler>();
             services.AddScoped<IBasicAuthCommandHandler, BasicAuthCommandHandler>();
             services.AddScoped<IGetJwtTokenHandler, GetJwtTokenHandler>();
+
+            services.AddTransient<DbSeeder>();
         }
     }
 }

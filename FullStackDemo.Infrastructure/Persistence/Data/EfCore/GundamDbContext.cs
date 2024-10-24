@@ -1,4 +1,5 @@
-﻿using FullStackDemo.Domain.Entities.MobileSuits;
+﻿using FullStackDemo.Domain.Entities.Athentication;
+using FullStackDemo.Domain.Entities.MobileSuits;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
@@ -13,7 +14,7 @@ namespace FullStackDemo.Infrastructure.Persistence.Data.EfCore
     {
         // DbSet properties for interacting with entities in the database.
         DbSet<MobileSuit> MobileSuits { get; set; }
-
+        DbSet<UserBasicAuth> UserBasicAuth { get; set; }
 
         EntityEntry Entry(object entity);
 
@@ -30,6 +31,7 @@ namespace FullStackDemo.Infrastructure.Persistence.Data.EfCore
 
         // DbSet for entities, enabling CRUD operations on the corresponding database table
         public DbSet<MobileSuit> MobileSuits { get; set; }
+        public DbSet<UserBasicAuth> UserBasicAuth { get; set; }
 
         public EntityEntry Entry(object entity)
         {
