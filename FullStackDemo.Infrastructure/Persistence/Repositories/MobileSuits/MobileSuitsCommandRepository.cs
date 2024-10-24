@@ -21,7 +21,7 @@ namespace FullStackDemo.Infrastructure.Persistence.Repositories.MobileSuits
         public async Task<int> CreateMobileSuitAsync(MobileSuit data) 
         {
             int res = 0;
-            data.DateCreated = DateTime.UtcNow;
+            data.DateCreated = DateTime.Now;
 
             // Asynchronously adds the new MobileSuit entity to the DbSet
             await _gundamDbContext.MobileSuits.AddAsync(data);
@@ -45,7 +45,7 @@ namespace FullStackDemo.Infrastructure.Persistence.Repositories.MobileSuits
         public async Task<int> UpdateMobileSuitAsync(MobileSuit data)
         {
             int res = 0;
-            data.DateEdited = DateTime.UtcNow;
+            data.DateEdited = DateTime.Now;
 
             // Update the new MobileSuit entity to the DbSet
             _gundamDbContext.MobileSuits.Update(data);
@@ -73,7 +73,7 @@ namespace FullStackDemo.Infrastructure.Persistence.Repositories.MobileSuits
 
             // Set the properties for soft deletion
             data.Deleted = true;
-            data.DateDeleted = DateTime.UtcNow;
+            data.DateDeleted = DateTime.Now;
 
             // Attach the entity to the context and specify which properties to update
             _gundamDbContext.Entry(data).Property("Deleted").IsModified = true;

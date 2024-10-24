@@ -14,7 +14,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace FullStackDemo.WebApi.Controllers
 {
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     [Route("api/[controller]")]
     [ApiController]
     public class MobileSuitController : ControllerBase
@@ -60,7 +60,7 @@ namespace FullStackDemo.WebApi.Controllers
 
         // POST: api/MobileSuit/CreateMobileSuit
         [HttpPost("[action]")]
-        public async Task<IActionResult> CreateMobileSuit([FromQuery] CreateMobileSuitCommand data) 
+        public async Task<IActionResult> CreateMobileSuit([FromBody] CreateMobileSuitCommand data) 
         {
             ApiBodyDto response = new ApiBodyDto();
 
@@ -138,7 +138,7 @@ namespace FullStackDemo.WebApi.Controllers
 
         // DELETE api/MobileSuit/DeleteMobileSuit
         [HttpDelete("[action]")]
-        public async Task<IActionResult> DeleteMobileSuit([FromBody] DeleteMobileSuitCommand data)
+        public async Task<IActionResult> DeleteMobileSuit([FromQuery] DeleteMobileSuitCommand data)
         {
             ApiBodyDto response = new ApiBodyDto();
 

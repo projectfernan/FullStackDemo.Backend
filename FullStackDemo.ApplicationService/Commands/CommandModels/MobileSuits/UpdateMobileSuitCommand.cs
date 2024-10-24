@@ -17,6 +17,8 @@ namespace FullStackDemo.ApplicationService.Commands.CommandModels.MobileSuits
         public string Height { get; set; }
         public string Weight { get; set; }
         public string Manufacturer { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime DateCreated { get; set; }
         public string EditedBy { get; set; }
     }
 }
